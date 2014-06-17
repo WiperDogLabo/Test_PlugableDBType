@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://10.0.0.55:8080/xwiki/bin/view/WiperDog/JobConfiguration/" />
+<title>testJobConfiguration</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testJobConfiguration</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>index=1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=SQL_Server</td>
+	<td>SQL_Server</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>The first dbtype is SQLServer ============&gt;&gt;&gt;&gt;&gt;&gt; OK</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>index=2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=MySQL</td>
+	<td>MySQL</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>The second dbtype is MySQL ============&gt;&gt;&gt;&gt;&gt;&gt; OK</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>index=3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=Postgres</td>
+	<td>Postgres</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>The third dbtype is Postgres ============&gt;&gt;&gt;&gt;&gt;&gt; OK</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>index=3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=MongoDB</td>
+	<td>MongoDB</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>MongoDB ============&gt;&gt;&gt;&gt;&gt;&gt; OK</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>index=3</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listJob</td>
+	<td>index=1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>testJob409</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobFileNameText</td>
+	<td>testJob409</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>index=4</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=messageValid</td>
+	<td>Finish process successfully</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>Check job was created in /var/job: if testJob409.job was created and DBTYPE is MONGODB is OK !!!</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

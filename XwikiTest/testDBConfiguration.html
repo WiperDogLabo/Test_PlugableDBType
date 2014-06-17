@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://10.0.0.55:8080/xwiki/bin/view/WiperDog/DBConfiguration/" />
+<title>testDBConfiguration</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testDBConfiguration</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostID</td>
+	<td>HOSTID_TEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostName</td>
+	<td>HOSTNAME_TEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=port</td>
+	<td>123456</td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=setHostIdAs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=userName</td>
+	<td>USERNAME_TEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=sid</td>
+	<td>SID_TEST</td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=setSidAs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=dbInfo</td>
+	<td>*HOSTID_TEST-@MONGO-SID_TEST*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; TEST SUCCESS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=create_db_info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt;&gt; Check content of default.params file to confirm &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</td>
+</tr>
+</tbody></table>
+</body>
+</html>
