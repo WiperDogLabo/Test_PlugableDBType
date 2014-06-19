@@ -57,4 +57,15 @@ class PlugableDBType_Test_GetListJobFromJobDir {
 		assertNotNull(result)
 		assertTrue(result.size() == 0)
 	}
+	
+	/**
+	 * parameter is a file, not directory
+	 * @return empty list
+	 */
+	@Test
+	void test04(){
+		List result = GenerateTreeMenu.getListJobFromJobDir(null)
+		assertNotNull(result)
+		assertTrue(result.size() == 0)
+	}
 }

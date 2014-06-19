@@ -6,14 +6,14 @@ import org.junit.Test;
  * Testcase test method getData2CreateMenu(String JOB_DIR)
  *
  */
-class PlugableDBType_Test_GetData2CreateMenu {
+class PlugableDBType_Test_GetData2CreateMenu_FromjobDir {
 	
 	/**
 	 * Normal use case
 	 */
 	@Test
 	void test01(){
-		def expectRoot = ((new GroovyShell()).evaluate(new File("var/conf/dbms_info.cfg")))['TreeMenuInfo']
+		def expectRoot = ((new GroovyShell()).evaluate(new File("var/conf/use_for_xwiki.cfg")))['TreeMenuInfo']
 		def expectOutput = [
 			'MySQL':[:], 
 			'MySQL.Database_Area':['MySQL.Database_Area.InnoDBTablespace_Free.job'], 
@@ -56,5 +56,16 @@ class PlugableDBType_Test_GetData2CreateMenu {
 		
 		assertEquals(expectRoot, result['root'])
 		assertEquals(expectOutput, result['output'])
+	}
+	
+	/**
+	 * null parameter
+	 */
+	@Test
+	void test02(){
+		def result = GenerateTreeMenu.getData2CreateMenu(null)
+		assertNotNull(result)
+		assertTrue(result.containsKey('root'))
+		assertTrue(result.containsKey('output'))
 	}
 }

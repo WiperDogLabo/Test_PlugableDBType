@@ -6,7 +6,7 @@ import org.junit.Test;
  * Testcase test method getData2CreateMenu(List listjob)
  *
  */
-class PlugableDBType_Test_GetData2CreateMenu2 {
+class PlugableDBType_Test_GetData2CreateMenu_FromMongo {
 	
 	/**
 	 * Normal case
@@ -65,7 +65,7 @@ class PlugableDBType_Test_GetData2CreateMenu2 {
 			'MongoDB.Others':[], 
 			'OS':['OS.CPU_Linux'], 
 			'Others':[]]
-		def expectRoot = ((new GroovyShell()).evaluate(new File("var/conf/dbms_info.cfg")))['TreeMenuInfo']
+		def expectRoot = ((new GroovyShell()).evaluate(new File("var/conf/use_for_xwiki.cfg")))['TreeMenuInfo']
 		
 		def result = GenerateTreeMenu.getData2CreateMenu(listjob)
 		
@@ -124,7 +124,7 @@ class PlugableDBType_Test_GetData2CreateMenu2 {
 			'MongoDB.Others':[],
 			'OS':['OS.CPU_Linux'],
 			'Others':[]]
-		def expectRoot = ((new GroovyShell()).evaluate(new File("var/conf/dbms_info.cfg")))['TreeMenuInfo']
+		def expectRoot = ((new GroovyShell()).evaluate(new File("var/conf/use_for_xwiki.cfg")))['TreeMenuInfo']
 		
 		def result = GenerateTreeMenu.getData2CreateMenu(listjob)
 		
@@ -133,5 +133,27 @@ class PlugableDBType_Test_GetData2CreateMenu2 {
 		
 		assertEquals(expectRoot, result['root'])
 		assertEquals(expectOutput, result['output'])
+	}
+	
+	/**
+	 * null parameter
+	 */
+	@Test
+	void test03(){
+		def result = GenerateTreeMenu.getData2CreateMenu(null)
+		assertNotNull(result)
+		assertTrue(result.containsKey('root'))
+		assertTrue(result.containsKey('output'))
+	}
+	
+	/**
+	 * empty parameter
+	 */
+	@Test
+	void test04(){
+		def result = GenerateTreeMenu.getData2CreateMenu([])
+		assertNotNull(result)
+		assertTrue(result.containsKey('root'))
+		assertTrue(result.containsKey('output'))
 	}
 }

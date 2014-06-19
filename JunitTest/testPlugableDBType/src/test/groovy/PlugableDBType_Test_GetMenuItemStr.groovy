@@ -73,7 +73,6 @@ class PlugableDBType_Test_GetMenuItemStr {
 		def expected_1 = '<li>Database_Area<ul><li><a>SQL_Server.Database_Area.job1</a></li></ul></li>'
 		def expected_2 = '<li>Performance<ul><li><a>MySQL.Performance.job1</a></li></ul></li>'
 		def expected_3 = '<li>Proactive_Check<ul><li><a>Postgres.Proactive_Check.job1</a></li></ul></li>'
-		println result
 		assertTrue(result.contains(expected_1))
 		assertTrue(result.contains(expected_2))
 		assertTrue(result.contains(expected_3))
