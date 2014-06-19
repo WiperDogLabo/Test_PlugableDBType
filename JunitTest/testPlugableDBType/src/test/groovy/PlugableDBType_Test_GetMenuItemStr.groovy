@@ -2,11 +2,19 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.Mongo;
 
-class PlugableDBType_Test_TreeMenu {
+/**
+ * Test generate html string for
+ * generating tree menu
+ *
+ */
+class PlugableDBType_Test_GetMenuItemStr {
 	
 	/**
-	 * Check normal use with job's directory
+	 * Generate tree menu for selecting job file(.job)
 	 */
 	@Test
 	void test01(){
@@ -26,7 +34,7 @@ class PlugableDBType_Test_TreeMenu {
 		def expectedMSSQL_2 = '<li>Database_Structure<ul><li><a>SQL_Server.Database_Structure.Database_Version.job</a></li></ul></li>'
 		def expectedMSSQL_3 = '<li>Performance<ul><li><a>SQL_Server.Performance.Buffer_Cache_Hit_Ratio.job</a></li></ul></li>'
 		def expectedMSSQL_4 = '<li>Proactive_Check<ul><li><a>SQL_Server.Proactive_Check.Batch_Requests.job</a></li></ul></li>'
-		assertTrue(result.contains(expectedMySQL_1)) 
+		assertTrue(result.contains(expectedMySQL_1))
 		assertTrue(result.contains(expectedMySQL_2))
 		assertTrue(result.contains(expectedMySQL_3))
 		assertTrue(result.contains(expectedMySQL_4))
@@ -43,22 +51,55 @@ class PlugableDBType_Test_TreeMenu {
 	}
 	
 	/**
-	 * Check normal use with list job name
-	 * Note that list job name has no .job extension because it should be gotten from mongodb
+	 * Generate tree menu for selecting job from mongo
 	 */
 	@Test
 	void test02(){
-		def listJob = [
-				"MySQL.Database_Area.InnoDBTablespace_Free",
-				"MySQL.Performance.InnoDBBufferPool",
-				"Postgres.Database_Area.Tablespace_Free",
-				"SQL_Server.Database_Area.Database_free",
-				"SQL_Server.Performance.Buffer_Cache_Hit_Ratio",
-				"SQL_Server.Proactive_Check.Batch_Requests"
-			]
+		def HOST = "10.0.0.94"
+		def PORT = 27017
+		GenerateTreeMenu.HOST = HOST
+		GenerateTreeMenu.PORT = PORT
+		Mongo mongo = new Mongo(HOST, PORT)
+		DB db = mongo.getDB("wiperdog")
+		db.getCollection("SQL_Server.Database_Area.job1.IstIid").insert(new BasicDBObject([a:'A']))
+		db.getCollection("MySQL.Performance.job1.IstIid").insert(new BasicDBObject([a:'A']))
+		db.getCollection("Postgres.Proactive_Check.job1.IstIid").insert(new BasicDBObject([a:'A']))
 		
+		def listJob = GenerateTreeMenu.getListJobFromMongo()
+	
 		def data2CreateMenu = GenerateTreeMenu.getData2CreateMenu(listJob)
 		String result = GenerateTreeMenu.getMenuItemsStr(data2CreateMenu['root'], data2CreateMenu['output'])
+		
+		def expected_1 = '<li>Database_Area<ul><li><a>SQL_Server.Database_Area.job1</a></li></ul></li>'
+		def expected_2 = '<li>Performance<ul><li><a>MySQL.Performance.job1</a></li></ul></li>'
+		def expected_3 = '<li>Proactive_Check<ul><li><a>Postgres.Proactive_Check.job1</a></li></ul></li>'
+		println result
+		assertTrue(result.contains(expected_1))
+		assertTrue(result.contains(expected_2))
+		assertTrue(result.contains(expected_3))
+		
+		db.getCollection("SQL_Server.Database_Area.job1.IstIid").drop()
+		db.getCollection("MySQL.Performance.job1.IstIid").drop()
+		db.getCollection("Postgres.Proactive_Check.job1.IstIid").drop()
+	}
+	
+	/**
+	 * Generate tree menu with custom list job
+	 */
+	@Test
+	void test03(){
+		def listJob = [
+			"MySQL.Database_Area.InnoDBTablespace_Free",
+			"MySQL.Performance.InnoDBBufferPool",
+			"Postgres.Database_Area.Tablespace_Free",
+			"SQL_Server.Database_Area.Database_free",
+			"SQL_Server.Performance.Buffer_Cache_Hit_Ratio",
+			"SQL_Server.Proactive_Check.Batch_Requests"
+		]
+	
+		def data2CreateMenu = GenerateTreeMenu.getData2CreateMenu(listJob)
+		String result = GenerateTreeMenu.getMenuItemsStr(data2CreateMenu['root'], data2CreateMenu['output'])
+		
 		def expectedMySQL_1 = '<li>Database_Area<ul><li><a>MySQL.Database_Area.InnoDBTablespace_Free</a></li></ul></li>'
 		def expectedMySQL_3 = '<li>Performance<ul><li><a>MySQL.Performance.InnoDBBufferPool</a></li></ul></li>'
 		def expectedPG_1 = '<li>Database_Area<ul><li><a>Postgres.Database_Area.Tablespace_Free</a></li></ul></li>'

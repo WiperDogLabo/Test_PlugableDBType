@@ -1,8 +1,13 @@
+import com.mongodb.DB
+import com.mongodb.Mongo;
+
 /**
  * Get data to create tree menu
  */
 
 class GenerateTreeMenu {
+	def static HOST = "localhost"
+	def static PORT = 27017
 	def static CONFIG = [
 	"DbType": [
 		"MySQL": "@MYSQL",
@@ -54,14 +59,11 @@ class GenerateTreeMenu {
 ]
 	
 	/**
-	 * getData2CreateMenu: get data to create tree menu
+	 * getListJobFromJobDir: get list job from job directory
 	 * @Param JOB_DIR: job directory
-	 * @Return data2CreateMenu
+	 * @Return list_job
 	 */
-	public static getData2CreateMenu(String JOB_DIR) {
-		def data2CreateMenu = [:]
-		def shell = new GroovyShell()
-
+	public static getListJobFromJobDir(String JOB_DIR) {
 		// Get list job
 		def job_dir = new File(JOB_DIR)
 		def list_job = []
@@ -73,6 +75,46 @@ class GenerateTreeMenu {
 				}
 			}
 		}
+		return list_job
+	}
+
+	/**
+	 * getListJobFromMongo: get list job from mongo db
+	 * @Return list_job
+	 */
+	public static getListJobFromMongo() {
+		def tmp = []
+		def list_job = []
+		Mongo mongoDBConn = new Mongo(HOST, PORT)
+		DB db = mongoDBConn.getDB("wiperdog")
+		def collections = db.getCollectionNames()
+		for(def collection in collections) {
+			if(collection.lastIndexOf(".") > 0 && collection.split("\\.").size() > 2) {
+				def jobname = collection.substring(0, collection.lastIndexOf("."))
+				if(!list_job.contains(jobname)){
+					list_job.add(jobname)
+				}
+			} else {
+				if(!list_job.contains(collection)) {
+					list_job.add(collection)
+				}
+			}
+		}
+		mongoDBConn.close()
+		return list_job
+	}
+	
+	/**
+	 * getData2CreateMenu: get data to create tree menu
+	 * @Param JOB_DIR: job directory
+	 * @Return data2CreateMenu
+	 */
+	public static getData2CreateMenu(String JOB_DIR) {
+		def data2CreateMenu = [:]
+		def shell = new GroovyShell()
+
+		// Get list job from job directory
+		def list_job = getListJobFromJobDir(JOB_DIR)
 		data2CreateMenu = getData2CreateMenu(list_job)
 		return data2CreateMenu
 	}
@@ -131,7 +173,7 @@ class GenerateTreeMenu {
 								}
 							}
 						} else {
-							if ((tmpArray.size() == 3) && (output[k] instanceof List)) {
+							if ((tmpArray.size() >= 2) && (output[k] instanceof List)) {
 								output[k].add(job)						
 								//Set to not add in others group
 								isOthersJob = false
