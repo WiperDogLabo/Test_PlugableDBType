@@ -12,8 +12,8 @@ else
 	fi
 
 	# Config dbms information
-	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/dbms_info.cfg
-	cat > $wiperdog_home/etc/dbms_info.cfg <<eof
+	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/use_for_xwiki.cfg
+	cat > $wiperdog_home/etc/use_for_xwiki.cfg <<eof
 		[
 			"DbType": [
 				"MySQL": "@MYSQL",
