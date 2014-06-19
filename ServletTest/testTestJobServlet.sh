@@ -12,8 +12,8 @@ else
 	fi
 
 	# Config dbms information
-	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/dbms_info.cfg
-	cat > $wiperdog_home/etc/dbms_info.cfg <<eof
+	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/use_for_xwiki.cfg
+	cat > $wiperdog_home/etc/use_for_xwiki.cfg <<eof
 		[
 			"DbType": [
 				"MySQL": "@MYSQL",
@@ -74,14 +74,44 @@ eof
 fi
 
 echo ">>>>> TEST GET METHOD OF TestJobServlet <<<<<"
+echo
+echo "1. Generate menu in init screen."
 content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/TestJobServlet')
 echo "Result response data after GET request:"
 echo "--------------------------------------------"
 echo $content
-echo "--------------------------------------------"
+echo "****************"
 if [[ $content =~ .*'<li>MongoDB'.* ]]
 then
-	echo "Get data to generate menu successfully!!!"
+	echo "Successfully!!!"
 else
-	echo "Get data to generate menu failure!!!"
+	echo "Failure!!!"
 fi
+echo "****************"
+
+echo
+echo "2. Servlet function: choice job."
+echo "Create and write in to job file: " $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job
+cat > $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job <<eof
+JOB = [name:"MongoDB.Database_Area.testjob409"]
+FETCHACTION = {
+    return "Data return issue 409"
+}
+SENDTYPE = "Store"
+RESOURCEID = "Sr/PgDbVer"
+MONITORINGTYPE = "@DB"
+DBTYPE = "@MONGO"
+DEST = parameters.dest
+eof
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/TestJobServlet?jobFileName=MongoDB.Database_Area.testjob409.job')
+echo "Result response data after GET request:"
+echo "--------------------------------------------"
+echo $content
+echo "****************"
+if [[ $content =~ .*'Data return issue 409'.* ]]
+then
+	echo "Successfully!!!"
+else
+	echo "Failure!!!"
+fi
+echo "****************"

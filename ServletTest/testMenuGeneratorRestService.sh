@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ ! $# -eq 1 ];then
    echo "Incorrect parameter !"
-   echo "Usage: ./testJobDocServlet.sh /wiperdog_home_path"
+   echo "Usage: ./testTestJobServlet.sh /wiperdog_home_path"
    exit
 else
 	wiperdog_home=$1
@@ -73,15 +73,44 @@ eof
 	echo "** WIPERDOG WAS RUNNING ..."
 fi
 
-echo ">>>>> TEST GET METHOD OF JobDocServlet <<<<<"
-content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/JobDocInfoServlet')
+echo ">>>>> TEST GET METHOD OF MenuGeneratorRestService <<<<<"
+echo
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/menuGenerator')
 echo "Result response data after GET request:"
 echo "--------------------------------------------"
 echo $content
-echo "--------------------------------------------"
-if [[ $content =~ .*'<li>MongoDB'.* ]]
+echo "****************"
+if [[ $content =~ .*'tree'.*'mapIstIid'.* ]]
 then
-	echo "Get data to generate menu successfully!!!"
+	echo "Successfully !!!"
 else
-	echo "Get data to generate menu failure!!!"
+	echo "Failure !!!"
 fi
+echo "****************"
+
+echo
+echo "2. Servlet function: choice job."
+echo "Create and write in to job file: " $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job
+cat > $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job <<eof
+JOB = [name:"MongoDB.Database_Area.testjob409"]
+FETCHACTION = {
+    return "Data return issue 409"
+}
+SENDTYPE = "Store"
+RESOURCEID = "Sr/PgDbVer"
+MONITORINGTYPE = "@DB"
+DBTYPE = "@MONGO"
+DEST = parameters.dest
+eof
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/TestJobServlet?jobFileName=MongoDB.Database_Area.testjob409.job')
+echo "Result response data after GET request:"
+echo "--------------------------------------------"
+echo $content
+echo "****************"
+if [[ $content =~ .*'Data return issue 409'.* ]]
+then
+	echo "Successfully !!!"
+else
+	echo "Failure !!!"
+fi
+echo "****************"

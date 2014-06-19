@@ -12,8 +12,8 @@ else
 	fi
 
 	# Config dbms information
-	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/dbms_info.cfg
-	cat > $wiperdog_home/etc/dbms_info.cfg <<eof
+	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/use_for_xwiki.cfg
+	cat > $wiperdog_home/etc/use_for_xwiki.cfg <<eof
 		[
 			"DbType": [
 				"MySQL": "@MYSQL",
@@ -73,16 +73,55 @@ eof
 	echo "** WIPERDOG WAS RUNNING ..."
 fi
 
-echo ">>>>> TEST POST METHOD OF ImportInstanceServlet <<<<<"
-content=$(curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/JobDeclared' -d '{"COMMAND":"Write","JOB":{"monitoringType":"@DB","dbType":"MongoDB","jobName":"MongoDB.Database_Area.testjob409","jobFileName":"MongoDB.Database_Area.testjob409","fetchAction":"{\n    return \"Data return issue 409\"\n}","sendType":"Store","resourceId":"Sr/PgDbVer","KEYEXPR":{"_chart":{}}},"PARAMS":{},"INSTANCES":{}}')
+echo ">>>>> TEST POST METHOD OF JobDeclaredServlet <<<<<"
+echo
+echo "1. command = Read -> Read job's file"
+content=$(curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/JobDeclared' -d '{"job":"Postgres.Database_Area.Tablespace_Free", "COMMAND":"Read"}')
+echo "--------------------------------------------"
+echo $content
+echo "****************"
+if [[ $content =~ .*'FETCHACTION'.*'ACCUMULATE'.* ]]
+then
+	echo "Successfully !!!"
+else
+	echo "Failure!!!"
+fi
+echo "****************"
+echo
+echo "2. command = Write -> Write job's file"
+currentDir="`pwd`"
+cat > $currentDir/postRequestFile.txt <<eof
+{
+	"COMMAND":"Write",
+	"JOB":{
+		"monitoringType":"@DB",
+		"dbType":"MongoDB",
+		"jobName":"MongoDB.Database_Area.testjob409",
+		"jobFileName":"MongoDB.Database_Area.testjob409",
+		"fetchAction":"{\n    return \"Data return issue 409\"\n}",
+		"sendType":"Store",
+		"resourceId":"Sr/PgDbVer",
+		"KEYEXPR":{"_chart":{}}
+	},
+	"PARAMS":{},
+	"INSTANCES":{}
+}
+eof
+content=$(curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/JobDeclared' -d @postRequestFile.txt)
 echo "Result response data after POST request:"
 echo "--------------------------------------------"
 echo $content
-echo "--------------------------------------------"
+echo "****************"
 if [[ $content =~ '{"status":"OK","message":"Finish process successfully"}' ]]
 then
-	echo "Get data to generate menu successfully!!!"
-	echo "Check file MongoDB.Database_Area.testjob409 was created in /var/job to confirm !!!"
+	jobContent=$(cat $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job)
+	if [[ $jobContent =~ "@MONGO" ]]
+	then
+		echo "Successfully !!!"
+	else
+		echo "Failure!!!"
+	fi
 else
-	echo "Get data to generate menu failure!!!"
+	echo "Failure!!!"
 fi
+echo "****************"
