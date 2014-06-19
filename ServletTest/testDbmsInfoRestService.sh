@@ -12,15 +12,22 @@ else
 	fi
 
 	# Config dbms information
-	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/dbms_info.cfg
-	cat > $wiperdog_home/etc/dbms_info.cfg <<eof
+	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/use_for_xwiki.cfg
+	cat > $wiperdog_home/etc/use_for_xwiki.cfg <<eof
 		[
 			"DbType": [
 				"MySQL": "@MYSQL",
 				"SQL_Server": "@MSSQL",
 				"Postgres": "@PGSQL",
 				"MongoDB": "@MONGO",
-				"MariaDB": "@MARIA"
+				"Maria": "@MARIA"
+			],
+			"DbConnStrFormat": [
+				"MySQL": "jdbc:mysql://{host}:{port}/{schemaName}",
+				"SQL_Server": "jdbc:sqlserver://{host}:{port}",
+				"Postgres": "jdbc:postgresql://{host}:{port}/{dbName}",
+				"MongoDB": "",
+				"Maria": ""
 			],
 			"TreeMenuInfo": [
 				"MySQL": [
@@ -51,10 +58,14 @@ else
 					"Others":[]
 				],
 				"MongoDB":[
+					"HostInfo":[],
+					"ServerStatus":[],
+					"Statistics":[],
+					"Others":[]
+				],
+				"Maria":[
 					"Database_Area":[],
-					"Database_Statistic":[],
 					"Database_Structure":[],
-					"FaultManagement":[],
 					"Performance":[],
 					"Proactive_Check":[],
 					"Others":[]
@@ -73,29 +84,61 @@ eof
 	echo "** WIPERDOG WAS RUNNING ..."
 fi
 
-echo "1. TEST GET METHOD OF DbmsInfoRestService"
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/getdbms'
-content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/getdbms')
+echo ">>>>> TEST GET METHOD OF DbmsInfoRestService <<<<<"
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/use_for_xwiki'
+echo
+echo "Case 1. Get all information in use_for_xwiki.cfg"
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/use_for_xwiki')
 echo "Result response data after GET request:"
 echo "--------------------------------------------"
 echo $content
-echo "--------------------------------------------"
-if [[ $content =~ '["MySQL","SQL_Server","Postgres","MongoDB","MariaDB"]' ]]
+echo "****************"
+if [[ $content =~ .*'DbType'.*'DbConnStrFormat'.*'TreeMenuInfo'.* ]]
 then
-	echo "Get data to generate menu successfully!!!"
+	echo "Successfully !!!"
 else
-	echo "Get data to generate menu failure!!!"
+	echo "Failure !!!"
 fi
+echo "****************"
 echo
-echo "2. TEST POST METHOD OF DbmsInfoRestService"
-content=$(curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/getdbms')
-echo "Result response data after POST request:"
+echo "Case 2. Get information in use_for_xwiki.cfg corresponds to key \"DbType\""
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/use_for_xwiki/DbType')
+echo "Result response data after GET request:"
 echo "--------------------------------------------"
 echo $content
-echo "--------------------------------------------"
-if [[ $content =~ '{"MySQL":"@MYSQL","SQL_Server":"@MSSQL","Postgres":"@PGSQL","MongoDB":"@MONGO","MariaDB":"@MARIA"}' ]]
+echo "****************"
+if [[ $content =~ '{"MySQL":"@MYSQL","SQL_Server":"@MSSQL","Postgres":"@PGSQL","MongoDB":"@MONGO","Maria":"@MARIA"}' ]]
 then
-	echo "Get data to generate menu successfully!!!"
+	echo "Successfully !!!"
 else
-	echo "Get data to generate menu failure!!!"
+	echo "Failure !!!"
 fi
+echo "****************"
+echo
+echo "Case 3. Get information in use_for_xwiki.cfg corresponds to key \"TreeMenuInfo\""
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/use_for_xwiki/TreeMenuInfo')
+echo "Result response data after GET request:"
+echo "--------------------------------------------"
+echo $content
+echo "****************"
+if [[ $content =~ .*'MongoDB'.*'Maria'.* ]]
+then
+	echo "Successfully !!!"
+else
+	echo "Failure !!!"
+fi
+echo "****************"
+echo
+echo "Case 4. Get information in use_for_xwiki.cfg corresponds to key \"DbConnStrFormat\""
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/use_for_xwiki/DbConnStrFormat')
+echo "Result response data after GET request:"
+echo "--------------------------------------------"
+echo $content
+echo "****************"
+if [[ $content =~ .*'jdbc:mysql:'.*'jdbc:sqlserver:'.*'jdbc:postgresql:'.* ]]
+then
+	echo "Successfully !!!"
+else
+	echo "Failure !!!"
+fi
+echo "****************"

@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ ! $# -eq 1 ];then
    echo "Incorrect parameter !"
-   echo "Usage: ./testJobDeclaredServlet.sh /wiperdog_home_path"
+   echo "Usage: ./testTestJobServlet.sh /wiperdog_home_path"
    exit
 else
 	wiperdog_home=$1
@@ -12,8 +12,8 @@ else
 	fi
 
 	# Config dbms information
-	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/use_for_xwiki.cfg
-	cat > $wiperdog_home/etc/use_for_xwiki.cfg <<eof
+	echo "WRITING DBMS INFORMATION INTO: " $wiperdog_home/etc/dbms_info.cfg
+	cat > $wiperdog_home/etc/dbms_info.cfg <<eof
 		[
 			"DbType": [
 				"MySQL": "@MYSQL",
@@ -73,55 +73,44 @@ eof
 	echo "** WIPERDOG WAS RUNNING ..."
 fi
 
-echo ">>>>> TEST POST METHOD OF JobDeclaredServlet <<<<<"
+echo ">>>>> TEST GET METHOD OF MenuGeneratorRestService <<<<<"
 echo
-echo "1. command = Read -> Read job's file"
-content=$(curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/JobDeclared' -d '{"job":"Postgres.Database_Area.Tablespace_Free", "COMMAND":"Read"}')
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:8089/menuGenerator')
+echo "Result response data after GET request:"
 echo "--------------------------------------------"
 echo $content
 echo "****************"
-if [[ $content =~ .*'FETCHACTION'.*'ACCUMULATE'.* ]]
+if [[ $content =~ .*'tree'.*'mapIstIid'.* ]]
 then
 	echo "Successfully !!!"
 else
-	echo "Failure!!!"
+	echo "Failure !!!"
 fi
 echo "****************"
+
 echo
-echo "2. command = Write -> Write job's file"
-currentDir="`pwd`"
-cat > $currentDir/postRequestFile.txt <<eof
-{
-	"COMMAND":"Write",
-	"JOB":{
-		"monitoringType":"@DB",
-		"dbType":"MongoDB",
-		"jobName":"MongoDB.Database_Area.testjob409",
-		"jobFileName":"MongoDB.Database_Area.testjob409",
-		"fetchAction":"{\n    return \"Data return issue 409\"\n}",
-		"sendType":"Store",
-		"resourceId":"Sr/PgDbVer",
-		"KEYEXPR":{"_chart":{}}
-	},
-	"PARAMS":{},
-	"INSTANCES":{}
+echo "2. Servlet function: choice job."
+echo "Create and write in to job file: " $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job
+cat > $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job <<eof
+JOB = [name:"MongoDB.Database_Area.testjob409"]
+FETCHACTION = {
+    return "Data return issue 409"
 }
+SENDTYPE = "Store"
+RESOURCEID = "Sr/PgDbVer"
+MONITORINGTYPE = "@DB"
+DBTYPE = "@MONGO"
+DEST = parameters.dest
 eof
-content=$(curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/JobDeclared' -d @postRequestFile.txt)
-echo "Result response data after POST request:"
+content=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" 'http://localhost:13111/TestJobServlet?jobFileName=MongoDB.Database_Area.testjob409.job')
+echo "Result response data after GET request:"
 echo "--------------------------------------------"
 echo $content
 echo "****************"
-if [[ $content =~ '{"status":"OK","message":"Finish process successfully"}' ]]
+if [[ $content =~ .*'Data return issue 409'.* ]]
 then
-	jobContent=$(cat $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job)
-	if [[ $jobContent =~ "@MONGO" ]]
-	then
-		echo "Successfully !!!"
-	else
-		echo "Failure!!!"
-	fi
+	echo "Successfully !!!"
 else
-	echo "Failure!!!"
+	echo "Failure !!!"
 fi
 echo "****************"
