@@ -17,6 +17,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>click</td>
+	<td>link=Collapse All</td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>TEST GENERATE MENU</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>xpath=(//ul[@id='treemenu2']/li[4])[4]</td>
 	<td>*MongoDB*</td>
@@ -24,7 +34,52 @@
 <tr>
 	<td>echo</td>
 	<td></td>
-	<td>========= TEST TREE MENU OK =====================</td>
+	<td>SUCCESS !!!</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>TEST FUNCTIONS</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//ul[@id='treemenu2']/li[3])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//ul[@id='treemenu2']/li)[18]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Postgres.Database_Area.Tablespace_Free.job</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fileContent</td>
+	<td>INST_NAME,SCHEDULE<br />instance_1, 60i</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loadFromFile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=saveToInstFile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=messageLoadFile</td>
+	<td>*Postgres.Database_Area.Tablespace_Free.instances*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>SUCCESS !!!</td>
 </tr>
 </tbody></table>
 </body>
