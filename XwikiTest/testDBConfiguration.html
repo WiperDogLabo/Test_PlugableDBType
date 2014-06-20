@@ -17,6 +17,206 @@
 	<td></td>
 </tr>
 <tr>
+	<td>echo</td>
+	<td></td>
+	<td>TEST FILL DBTYPE INTO SELECT BOX</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 1: Size list DBType (select box) = 6</td>
+</tr>
+<tr>
+	<td>storeXpathCount</td>
+	<td>//select[@id='dbtype']/option</td>
+	<td>sizeDBType</td>
+</tr>
+<tr>
+	<td>assertEval</td>
+	<td>${sizeDBType}</td>
+	<td>6</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 1: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 2: Option 2 is MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=dbtype</td>
+	<td>*@MYSQL*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 2: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 3: Option 3 is SQL_Server</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=2</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=dbtype</td>
+	<td>*@MSSQL*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 3: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 4: Option 4 is Postgres</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=3</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=dbtype</td>
+	<td>*@PGSQL*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 4: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 5: Option 5 is MongoDB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=4</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=dbtype</td>
+	<td>*@MONGO*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 5: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 6: Option 6 is MariaDB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=5</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=dbtype</td>
+	<td>*@MARIA*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 6: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>TEST FILL DBTYPE INTO SELECT BOX: SUCCESS !!!</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>====================================================================</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>TEST FUNCTIONS</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 1: Generate PostgreSQL information (DB Connnection String is exists)</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostID</td>
+	<td>HOSTID_PGSQL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostName</td>
+	<td>HOSTNAME_PGSQL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=port</td>
+	<td>3333</td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=setHostIdAs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=userName</td>
+	<td>USERNAME_PGSQL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=sid</td>
+	<td>SID_PGSQL</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=dbInfo</td>
+	<td>*HOSTID_PGSQL-@PGSQL*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 1: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 2: Generate MongoDB information (no DB Connnection String)</td>
+</tr>
+<tr>
 	<td>select</td>
 	<td>id=dbtype</td>
 	<td>index=4</td>
@@ -37,11 +237,6 @@
 	<td>123456</td>
 </tr>
 <tr>
-	<td>check</td>
-	<td>id=setHostIdAs</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>id=userName</td>
 	<td>USERNAME_TEST</td>
@@ -52,13 +247,8 @@
 	<td>SID_TEST</td>
 </tr>
 <tr>
-	<td>check</td>
-	<td>id=setSidAs</td>
-	<td></td>
-</tr>
-<tr>
 	<td>answerOnNextPrompt</td>
-	<td>Test</td>
+	<td>jdbc://MongoDB://somehost:1234</td>
 	<td></td>
 </tr>
 <tr>
@@ -69,12 +259,7 @@
 <tr>
 	<td>assertText</td>
 	<td>id=dbInfo</td>
-	<td>*HOSTID_TEST-@MONGO-SID_TEST*</td>
-</tr>
-<tr>
-	<td>echo</td>
-	<td></td>
-	<td>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; TEST SUCCESS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</td>
+	<td>*@MONGO*</td>
 </tr>
 <tr>
 	<td>chooseOkOnNextConfirmation</td>
@@ -94,7 +279,282 @@
 <tr>
 	<td>echo</td>
 	<td></td>
-	<td>&gt;&gt;&gt;&gt;&gt;&gt; Check content of default.params file to confirm &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</td>
+	<td>========== Check content of default.params file to confirm ==========</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 2: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 3: Test edit button, check enable/disable control</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.edit_btn.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=dbtype</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=hostID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=sid</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=dbtype</td>
+	<td>@MYSQL</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Edit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=dbtype</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=hostID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=sid</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=dbtype</td>
+	<td>@MONGO</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>id=xwikicontent</td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 3: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>TEST FUNCTIONS: SUCCESSS !!!</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;Cleanup, delete all unused record</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Delete'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>*Are you sure*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Delete'])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>*Are you sure*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=create_db_info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Do you want to add there DBInfomation ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>chooseOkOnNextConfirmation</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostID</td>
+	<td>HOSTID_TEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostName</td>
+	<td>HOSTNAME_TEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=port</td>
+	<td>123456</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=userName</td>
+	<td>USERNAME_TEST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=sid</td>
+	<td>SID_TEST</td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=setHostIdAs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=setSidAs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>answerOnNextPrompt</td>
+	<td>jdbc://MongoDB://somehost:1234</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>chooseOkOnNextConfirmation</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=dbInfo</td>
+	<td>*HOSTID_TEST-@MONGO-SID_TEST*</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Edit'])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=dbtype</td>
+	<td>@MONGO</td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=dbtype</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=hostID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotEditable</td>
+	<td>id=sid</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=hostID</td>
+	<td>HOSTID_TEST</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=hostName</td>
+	<td>somehost</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=port</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=userName</td>
+	<td>USERNAME_TEST</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=sid</td>
+	<td>SID_TEST</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&lt;&lt; Continue checking </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Delete'])[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbtype</td>
+	<td>index=1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostID</td>
+	<td>qwe</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostName</td>
+	<td>qwe</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=port</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=userName</td>
+	<td>qwe</td>
+</tr>
+<tr>
+	<td>answerOnNextPrompt</td>
+	<td>my_new_schema</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=dbInfo</td>
+	<td>*jdbc:mysql://qwe:1234/my_new_schema*</td>
 </tr>
 </tbody></table>
 </body>

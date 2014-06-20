@@ -17,9 +17,64 @@
 	<td></td>
 </tr>
 <tr>
+	<td>click</td>
+	<td>link=Collapse All</td>
+	<td></td>
+</tr>
+<tr>
 	<td>echo</td>
 	<td></td>
 	<td>TEST GENERATE MENU</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 1: The 1st menu is MySQL</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=li.submenu</td>
+	<td>*MySQL*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 1: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 2: The 2nd menu is SQL_Server</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//ul[@id='treemenu2']/li[2])[2]</td>
+	<td>*SQL_Server*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>Case 2: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 3: The 3rd menu is Postgres</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//ul[@id='treemenu2']/li[3])[3]</td>
+	<td>*Postgres*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 3: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 4: The 4th menu is MongoDB</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -29,7 +84,57 @@
 <tr>
 	<td>echo</td>
 	<td></td>
-	<td>SUCCESS !!!</td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 4: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 5: The 5th menu is MariaDB</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//ul[@id='treemenu2']/li[5])[4]</td>
+	<td>*Maria*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 5: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 6: The 6th menu is OS</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//ul[@id='treemenu2']/li[6])[4]</td>
+	<td>*OS*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 6: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case 7: The 7th menu is Other DBType</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//ul[@id='treemenu2']/li[7])[4]</td>
+	<td>*Others*</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>&gt;&gt;&gt;&gt;&gt; Case7: OK</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>TEST GENERATE MENU: SUCCESS !!!</td>
 </tr>
 <tr>
 	<td>echo</td>
@@ -49,7 +154,7 @@
 <tr>
 	<td>echo</td>
 	<td></td>
-	<td>SUCCESS !!!</td>
+	<td>TEST FUNCTIONS: SUCCESS !!!</td>
 </tr>
 </tbody></table>
 </body>
