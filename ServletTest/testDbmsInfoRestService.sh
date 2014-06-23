@@ -111,7 +111,6 @@ if [[ $content =~ .*'"MySQL":"@MYSQL","SQL_Server":"@MSSQL","Postgres":"@PGSQL",
 then
 	echo "Successfully !!!"
 else
-	echo $content
 	echo "Failure !!!"
 fi
 echo "****************"
