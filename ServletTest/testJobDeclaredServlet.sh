@@ -112,7 +112,7 @@ echo "Result response data after POST request:"
 echo "--------------------------------------------"
 echo $content
 echo "****************"
-if [[ $content =~ '{"status":"OK","message":"Finish process successfully"}' ]]
+if [[ $content =~ .*'"status":"OK","message":"Finish process successfully"'.* ]]
 then
 	jobContent=$(cat $wiperdog_home/var/job/MongoDB.Database_Area.testjob409.job)
 	if [[ $jobContent =~ "@MONGO" ]]

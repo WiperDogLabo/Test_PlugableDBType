@@ -107,10 +107,11 @@ echo "Result response data after GET request:"
 echo "--------------------------------------------"
 echo $content
 echo "****************"
-if [[ $content =~ '{"MySQL":"@MYSQL","SQL_Server":"@MSSQL","Postgres":"@PGSQL","MongoDB":"@MONGO","Maria":"@MARIA"}' ]]
+if [[ $content =~ .*'"MySQL":"@MYSQL","SQL_Server":"@MSSQL","Postgres":"@PGSQL","MongoDB":"@MONGO","Maria":"@MARIA"'.* ]]
 then
 	echo "Successfully !!!"
 else
+	echo $content
 	echo "Failure !!!"
 fi
 echo "****************"
