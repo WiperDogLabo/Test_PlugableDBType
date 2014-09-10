@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://192.168.200.218:8080/xwiki/bin/view/WiperDog/JobConfiguration" />
+<title>testJobConfiguration_save_ok_2</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testJobConfiguration_save_ok_2</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/WiperDog/JobConfiguration</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageValid</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=listMonitoring</td>
+	<td>@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>@OS</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=dbTypeCbb</td>
+	<td>-select a db type-</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=listJob</td>
+	<td>-select a job-</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listJob</td>
+	<td>OS.Process_Linux</td>
+</tr>
+<tr>
+	<td>verifyNotSelectedLabel</td>
+	<td>id=dbTypeCbb</td>
+	<td>MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>@SYS</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>@NET</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>Others</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>@DB</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageMonitoringtype</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=dbTypeCbb</td>
+	<td>-select a db type-</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>SQL_Server</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>Postgres</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>MongoDB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>Maria</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>MySQL</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageDbtypeCbb</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=listJob</td>
+	<td>-select a job-</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listJob</td>
+	<td>MySQL.Database_Area.InnoDBTablespace_Free</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listJob</td>
+	<td>-select a job-</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=jobNameText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageJobnameText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=jobFileNameText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageListActionJob</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>Query</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=queryText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=queryVariableText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageQueryText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>DB Execution</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=dbexecText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=dbexecVariableText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageDbexecText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>Command</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=commandText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=formatText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageCommandText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>Fetch Action</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=fetchactionText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageFetchactionText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=listSendType</td>
+	<td>-select a data type-</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listSendType</td>
+	<td>Store</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listSendType</td>
+	<td>Subtyped</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listSendType</td>
+	<td>Gathered</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=accumulateText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=finallyText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=groupkeyText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=jobClassNameText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=commentForJobText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=resourceIdText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=destText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=rootText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=sequenceText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=unitText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=groupChartText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=listChartType</td>
+	<td>pie</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listChartType</td>
+	<td>pie</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listChartType</td>
+	<td>line</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listChartType</td>
+	<td>bar</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listChartType</td>
+	<td>area</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=nameChartText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=chartColumnsText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=hintColumnsText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartGroup</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartType</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartName</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartColumn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=nameJobText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=valueJobText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageParamsName</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageParamsValue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageParams</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=instanceNameText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=hostIdText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=sidText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=scheduleText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstanceName</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstanceSchedule</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstances</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=console</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=testResult</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

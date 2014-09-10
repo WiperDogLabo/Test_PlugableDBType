@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://192.168.200.218:8080/xwiki/bin/view/WiperDog/JobConfiguration" />
+<title>testJobConfiguration_validate_other</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testJobConfiguration_validate_other</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/WiperDog/JobConfiguration</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Query</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=queryText</td>
+	<td>select 1 from dual;</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageDbtypeCbb</td>
+	<td>&quot;DB's&quot; type can not be empty</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Query</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=queryText</td>
+	<td>select 1 from dual;</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageJobnameText</td>
+	<td>Job Name can not be empty</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Query</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=queryText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageQueryText</td>
+	<td>&quot;QUERY&quot; can not be empty</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Query</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=queryText</td>
+	<td>select 1 from dual;</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=queryVariableText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageQueryVariableText</td>
+	<td>&quot;QUERY_VARIABLES&quot; must be map type</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=DB Execution</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageDbexecText</td>
+	<td>&quot;DBEXEC&quot; can not be empty</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=DB Execution</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dbexecText</td>
+	<td>insert into test.test(id,value) values(1,'king');</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dbexecVariableText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageDbexecVariableText</td>
+	<td>&quot;DBEXEC_VARIABLES&quot; must be map type</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Command</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageCommandText</td>
+	<td>&quot;COMMAND&quot; can not be empty</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Command</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=commandText</td>
+	<td>date</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=formatText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageFormatText</td>
+	<td>&quot;FORMAT&quot; must be map type</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Fetch Action</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageFetchactionText</td>
+	<td>&quot;FETCHACTION&quot; can not be empty</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Query</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=queryText</td>
+	<td>select 1 from dual;</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=unitText</td>
+	<td>value</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageKeyexprUnit</td>
+	<td>&quot;_unit&quot; must be map type</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>label=@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>label=MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listActionJob</td>
+	<td>label=Query</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=jobNameText</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=queryText</td>
+	<td>select 1 from dual;</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=destText</td>
+	<td>value</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateJobInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageDest</td>
+	<td>&quot;DEST&quot; must be map type or parameters.dest</td>
+</tr>
+</tbody></table>
+</body>
+</html>

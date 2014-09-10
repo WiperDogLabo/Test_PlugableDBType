@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://192.168.200.218:8080/xwiki/bin/view/WiperDog/JobConfiguration" />
+<title>testJobConfiguration_validate_KEYEXPR_chart</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testJobConfiguration_validate_KEYEXPR_chart</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/WiperDog/JobConfiguration</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listSendType</td>
+	<td>label=Store</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartName</td>
+	<td>Chart name is require !</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartColumn</td>
+	<td>Chart column is require !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nameChartText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartColumn</td>
+	<td>Chart column is require !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=chartColumnsText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChart</td>
+	<td>Chart added!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nameChartText</td>
+	<td>test2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=chartColumnsText</td>
+	<td>test2</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartType</td>
+	<td>No chart type selected !</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listChartType</td>
+	<td>label=line</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChart</td>
+	<td>Chart added!</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listSendType</td>
+	<td>label=Subtyped</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listChartType</td>
+	<td>label=bar</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nameChartText</td>
+	<td>test3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=chartColumnsText</td>
+	<td>test3</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChartGroup</td>
+	<td>Group chart is require !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=groupChartText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageChart</td>
+	<td>Chart added!</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[2].cells[1].innerHTML</td>
+	<td>pie</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[2].cells[2].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[2].cells[3].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[2].cells[4].innerHTML</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Edit'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=chartColumnsText</td>
+	<td>test345</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateChartInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Chart existed ! Update it ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[0].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[1].innerHTML</td>
+	<td>bar</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[2].innerHTML</td>
+	<td>test3</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[3].innerHTML</td>
+	<td>test345</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[4].innerHTML</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Delete'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Delete this chart, are you sure ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[0].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[1].innerHTML</td>
+	<td>bar</td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[2].innerHTML</td>
+	<td>test3</td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[3].innerHTML</td>
+	<td>test345</td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('chartTable').rows[4].cells[4].innerHTML</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
