@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://192.168.200.218:8080/xwiki/bin/view/WiperDog/JobConfiguration" />
+<title>testImportInstance_Save_Success_3</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testImportInstance_Save_Success_3</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/WiperDog/ImportInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listJob</td>
+	<td>MySQL.Proactive_Check.Thread</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.information</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.information</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageLoadFile</td>
+	<td>File sample.csv loaded !</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loadFromFile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageLoadFile</td>
+	<td>Load from file successfully</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[1].cells[0].innerHTML</td>
+	<td>inst_1</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[1].cells[1].innerHTML</td>
+	<td>10i</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[1].cells[2].innerHTML</td>
+	<td>{&quot;HOST_ID&quot;:&quot;host_id1&quot;,&quot;SID&quot;:&quot;sid1&quot;,&quot;PARAM1&quot;:&quot;val_param1&quot;,&quot;PARAM2&quot;:&quot;val_param2&quot;,&quot;PARAM3&quot;:&quot;val_params3&quot;}</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[2].cells[0].innerHTML</td>
+	<td>inst_2</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[2].cells[1].innerHTML</td>
+	<td>20i</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[2].cells[2].innerHTML</td>
+	<td>{&quot;HOST_ID&quot;:&quot;host_id2&quot;,&quot;SID&quot;:&quot;sid2&quot;,&quot;PARAM1&quot;:&quot;val_param21&quot;,&quot;PARAM2&quot;:&quot;val_param22&quot;,&quot;PARAM3&quot;:&quot;val_params23&quot;}</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[3].cells[0].innerHTML</td>
+	<td>inst_3</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[3].cells[1].innerHTML</td>
+	<td>30i</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('instancesTable').rows[3].cells[2].innerHTML</td>
+	<td>{&quot;HOST_ID&quot;:&quot;host_id3&quot;,&quot;SID&quot;:&quot;sid3&quot;,&quot;PARAM1&quot;:&quot;val_param31&quot;,&quot;PARAM2&quot;:&quot;val_param32&quot;,&quot;PARAM3&quot;:&quot;val_param33&quot;}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fileContent</td>
+	<td>INST_NAME,SCHEDULE<br />inst_2,2000i</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loadFromFile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyConfirmation</td>
+	<td>Dubplicate data at line 2 .Overwrite it ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fileContent</td>
+	<td>INST_NAME,SCHEDULE<br />inst_1,1000i<br />inst_3,3000i</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loadFromFile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyConfirmation</td>
+	<td>Dubplicate data at line 1 .Overwrite it ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=saveToInstFile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Save to instances file successfully ! </td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

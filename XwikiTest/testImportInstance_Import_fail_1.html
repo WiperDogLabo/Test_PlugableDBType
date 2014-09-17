@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://192.168.200.218:8080/xwiki/bin/view/WiperDog/JobConfiguration" />
+<title>testImportInstance_Import_fail_1</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testImportInstance_Import_fail_1</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/WiperDog/ImportInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listMonitoring</td>
+	<td>@DB</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dbTypeCbb</td>
+	<td>MySQL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=listJob</td>
+	<td>MySQL.Proactive_Check.Resource_Limit</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fileContent</td>
+	<td>INST_NAME,<br />inst_1,1000i,host_id1,sid1,val_param1,val_param2,val_params3<br />inst_2,2000i,host_id2,sid2,val_param21,val_param22,val_params23<br />inst_3,3000i,host_id3,sid3,val_param31,val_param32,val_param33</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loadFromFile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageLoadFile</td>
+	<td>Incorrect header format. Header element can not be empty string</td>
+</tr>
+</tbody></table>
+</body>
+</html>

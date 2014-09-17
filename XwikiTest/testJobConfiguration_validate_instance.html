@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://192.168.200.218:8080/xwiki/bin/view/WiperDog/JobConfiguration" />
+<title>testJobConfiguration_validate_instance</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testJobConfiguration_validate_instance</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/WiperDog/JobConfiguration</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstanceName</td>
+	<td>Instance name is require !</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstanceSchedule</td>
+	<td>Instance Schedule is require !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=instanceNameText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=scheduleText</td>
+	<td>300</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstances</td>
+	<td>New Instance added !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=instanceNameText</td>
+	<td>test2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostIdText</td>
+	<td>localhost</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=sidText</td>
+	<td>sid</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstanceSchedule</td>
+	<td>Instance Schedule is require !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=scheduleText</td>
+	<td>300i</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstances</td>
+	<td>New Instance added !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=instanceNameText</td>
+	<td>test3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=scheduleText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstanceSchedule</td>
+	<td>Instance Schedule Format Error!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=scheduleText</td>
+	<td>now</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstances</td>
+	<td>New Instance added !</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=instanceNameText</td>
+	<td>test4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=scheduleText</td>
+	<td>0 0 0 0 ?</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstanceSchedule</td>
+	<td>Instance Schedule Format Error!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=scheduleText</td>
+	<td>1/10 0 0 0 0 ?</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageInstances</td>
+	<td>New Instance added !</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[0].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[1].innerHTML</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[2].innerHTML</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[3].innerHTML</td>
+	<td>300</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.edit_btn.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=hostIdText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=sidText</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=scheduleText</td>
+	<td>30000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=updateInstance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyConfirmation</td>
+	<td>Instance name existed ! Update it ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[0].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[1].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[2].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[3].innerHTML</td>
+	<td>30000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.delete_btn.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyConfirmation</td>
+	<td>Delete this instance , are you sure ?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[0].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[1].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[2].innerHTML</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>this.page().getCurrentWindow().document.getElementById('updateJobInstanceTable').rows[1].cells[3].innerHTML</td>
+	<td>30000</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
